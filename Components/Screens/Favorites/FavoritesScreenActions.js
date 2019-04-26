@@ -11,5 +11,6 @@ const handleAddToFavorites = (pic) => async dispatch => {
 }
 
 export default {
-    handleAddToFavorites
+    handleAddToFavorites,
+    addToFavorites
 }

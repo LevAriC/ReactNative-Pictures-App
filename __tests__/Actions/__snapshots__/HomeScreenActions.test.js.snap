@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Action's type 1`] = `"SEARCH_PICS"`;
+
+exports[`Testing Action's type 2`] = `"TOGGLE_VIEW"`;

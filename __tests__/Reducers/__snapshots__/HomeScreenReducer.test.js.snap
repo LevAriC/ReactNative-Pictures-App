@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeScreen - Initial State 1`] = `"Grid"`;
+
+exports[`HomeScreen - Initial State 2`] = `undefined`;
+
+exports[`HomeScreen - Layout Toggle 1`] = `"Grid"`;
+
+exports[`HomeScreen - Layout Toggle 2`] = `undefined`;
+
+exports[`HomeScreen - Layout Toggle 3`] = `undefined`;
+
+exports[`HomeScreen - Picture Search 1`] = `"Grid"`;
+
+exports[`HomeScreen - Picture Search 2`] = `undefined`;
