@@ -1,0 +1,1 @@
+// export const SEARCH_PICS = 'SEARCH_PICS'

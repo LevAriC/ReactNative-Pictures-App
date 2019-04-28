@@ -17,7 +17,6 @@ const handlePicsSearch = (searchQuery) => async dispatch => {
     const url = `https://pixabay.com/api/?key=${pixabayKey}&q=${searchQuery}&image_type=photo&per_page=199`
     const options = { method: 'GET', headers: { 'Content-Type': 'application/json' } }
     const request = new Request(url, options)
-    console.log(request)
 
     await fetch(request)
     .then(response => response.json())

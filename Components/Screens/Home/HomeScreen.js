@@ -41,7 +41,7 @@ export class HomeScreen extends Component {
 
     toggleView() {
         const { view, handleToggleView } = this.props
-
+        
         if (view === 'Grid') {
             handleToggleView('List')
         } else {

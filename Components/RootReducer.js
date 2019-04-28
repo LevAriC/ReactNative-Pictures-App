@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import HomeScreenReducer from './Screens/Home/HomeScreenReducer'
+import FavoritesScreenReducer from './Screens/Favorites/FavoritesScreenReducer'
 // import PictureScreenReducer from './Components/PictureScreen/PictureScreenReducer'
-// import FavoritesReducer from './Components/Favorites/FavoritesReducer'
 
 export default combineReducers({
     HomeScreen: HomeScreenReducer,
+    FavoritesScreen: FavoritesScreenReducer
     // PictureScreen: PictureScreenReducer,
-    // Favorites: FavoritesReducer
 })
