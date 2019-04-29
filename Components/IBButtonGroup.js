@@ -23,7 +23,7 @@ export default class IBButtonGroup extends Component {
                 onPress={this.updateIndex}
                 selectedIndex={selectedIndex}
                 buttons={buttons}
-                containerStyle={{height: 28}}
+                containerStyle={{ height: 28, marginTop: 5, marginBottom: 5 }}
             />
         )
     }

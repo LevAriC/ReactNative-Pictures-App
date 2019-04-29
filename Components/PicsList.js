@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, FlatList, Image, ActivityIndicator, TouchableOpacity, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Dimensions, Alert  } from 'react-native'
 import { Header, Button, Icon, SearchBar, ButtonGroup  } from 'react-native-elements'
+import ImageView from 'react-native-image-view'
 
 export default class PicsList extends Component {
 
@@ -11,6 +12,7 @@ export default class PicsList extends Component {
         this.renderGridView = this.renderGridView.bind(this)
         this.renderListPic = this.renderListPic.bind(this)
         this.renderListView = this.renderListView.bind(this)
+        this.renderSinglePicView = this.renderSinglePicView.bind(this)
     }
 
     _keyExtractor(item) {
@@ -18,10 +20,9 @@ export default class PicsList extends Component {
     }
     
     renderGridPic({item}) {
-        const { navigate } = this.props.navigation
         return (
             <TouchableOpacity 
-            onPress={() => navigate('Picture', { picData: item })} 
+            onPress={() =>  this.props.picView(item)}
             style={{ flex: 1, flexDirection: 'column', margin: 1 }}
             >
                 <Image style={styles.imageThumbnail} source={{ uri: item.previewURL }} />
@@ -40,10 +41,9 @@ export default class PicsList extends Component {
     }
 
     renderListPic({item}) {
-        const { navigate } = this.props.navigation
         return (
             <TouchableOpacity 
-            onPress={() => navigate('Picture', { picData: item })} 
+            onPress={() =>  this.props.picView(item)}
             style={{ flex: 1, flexDirection: 'column', margin: 1 }}
             >
                 <View style={styles.listContainer}>
@@ -67,10 +67,62 @@ export default class PicsList extends Component {
         )
     }
 
+    renderSinglePicView() {
+        let pic = this.props.picsList[0]
+        const { width, height } = Dimensions.get('window');
+
+        const images = [
+            {
+                source: { uri: pic.largeImageURL},
+                width: width,
+                height: height -200,
+            },
+        ]
+
+        let isInFavorites = false
+        this.props.favoritesList.map((item) => { if (item.id === pic.id) isInFavorites = true })
+
+        if (isInFavorites) {
+            return(
+                <ImageView
+                images={images}
+                imageIndex={0}
+                onClose={() => this.props.lastView()}
+                animationType={'slide'}
+                isSwipeCloseEnabled={false}
+            />
+            )
+        } else {
+            return(
+                <ImageView
+                images={images}
+                imageIndex={0}
+                onClose={() => this.props.lastView()}
+                animationType={'slide'}
+                isSwipeCloseEnabled={false}
+                renderFooter={() => (
+                    <View>
+                        <Button
+                        large
+                        icon={<Icon type='font-awesome' name='heart' color='white' size={'40'} />}
+                        type="clear"
+                        buttonStyle={styles.favoritesButton}
+                        onPress={() => { 
+                            this.props.addToFavorites(pic)
+                            Alert.alert('Added to Favorites Successfully')
+                        }}
+                        />   
+                    </View>
+                )}
+                />
+            )
+        }
+    }
+
     render() {
-        return(
-            this.props.view === 'Grid' ? this.renderGridView() : this.renderListView()
-        )
+        if (this.props.view === 'Grid') return this.renderGridView()
+        else if (this.props.view === 'List') return this.renderListView()
+        else return this.renderSinglePicView()
     }
 }
 
@@ -84,8 +136,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         padding: 10,
-        marginLeft:16,
-        marginRight:16,
+        marginLeft: 16,
+        marginRight: 16,
         marginTop: 8,
         marginBottom: 8,
         borderRadius: 5,
@@ -93,17 +145,27 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     listPhoto: {
-        height: 50,
-        width: 50,
+        height: 60,
+        width: 60,
     },
     listTextContainer: {
         flex: 1,
         flexDirection: 'column',
-        marginLeft: 12,
+        marginLeft: 20,
         justifyContent: 'center',
     },
     listTitle: {
-        fontSize: 16,
+        fontSize: 14,
+        marginBottom: 5,
         color: '#000',
     },
+    favoritesButton: {
+        flex: 1,
+        marginBottom: 20,
+    },
+    description: {
+        fontFamily: 'AppleSDGothicNeo-Light',
+        fontSize: 12,
+        color: '#000',
+    }
 });

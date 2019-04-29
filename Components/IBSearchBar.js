@@ -15,7 +15,6 @@ export default class IBSearchBar extends Component {
     updateSearch(searchQuery) {
         this.setState({ searchQuery });
         this.props.handleSearch(searchQuery)
-        // console.log(search)
     };
 
     render() {
@@ -26,6 +25,8 @@ export default class IBSearchBar extends Component {
                 onChangeText={this.updateSearch}
                 value={searchQuery}
                 platform='ios'
+                containerStyle={{ height: 50 }}
+                inputContainerStyle={{height: 20}}
             />
         );
     }
