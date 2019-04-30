@@ -2,14 +2,20 @@
 
 exports[`HomeScreen - Initial State 1`] = `"Grid"`;
 
-exports[`HomeScreen - Initial State 2`] = `undefined`;
+exports[`HomeScreen - Initial State 2`] = `""`;
+
+exports[`HomeScreen - Initial State 3`] = `Array []`;
+
+exports[`HomeScreen - Initial State 4`] = `Array []`;
+
+exports[`HomeScreen - Initial State 5`] = `true`;
 
 exports[`HomeScreen - Layout Toggle 1`] = `"Grid"`;
 
-exports[`HomeScreen - Layout Toggle 2`] = `undefined`;
+exports[`HomeScreen - Layout Toggle 2`] = `"List"`;
 
-exports[`HomeScreen - Layout Toggle 3`] = `undefined`;
+exports[`HomeScreen - Layout Toggle 3`] = `"Grid"`;
 
-exports[`HomeScreen - Picture Search 1`] = `"Grid"`;
+exports[`HomeScreen - Layout Toggle 4`] = `"Picture"`;
 
-exports[`HomeScreen - Picture Search 2`] = `undefined`;
+exports[`HomeScreen - Layout Toggle 5`] = `"Picture"`;

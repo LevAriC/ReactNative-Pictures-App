@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Testing Action's type 1`] = `"SEARCH_PICS"`;
+exports[`Testing Action's type 1`] = `"TOGGLE_VIEW"`;
 
-exports[`Testing Action's type 2`] = `"TOGGLE_VIEW"`;
+exports[`Testing Action's type 2`] = `"SAVE_LAST_LIST"`;
+
+exports[`Testing Action's type 3`] = `"SEARCH_PICS"`;
+
+exports[`Testing Action's type 4`] = `"SAVE_LAST_VIEW"`;
+
+exports[`Testing Action's type 5`] = `"SEARCH_PICS"`;

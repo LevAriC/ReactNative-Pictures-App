@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesScreen - Initial State 1`] = `Array []`;
+
+exports[`FavoritesScreen - Initial State 2`] = `"Grid"`;
+
+exports[`FavoritesScreen - Initial State 3`] = `true`;
+
+exports[`FavoritesScreen - Initial State 4`] = `Object {}`;
+
+exports[`HomeScreen - Change View 1`] = `"Grid"`;
+
+exports[`HomeScreen - Change View 2`] = `"List"`;
+
+exports[`HomeScreen - Change View 3`] = `"Picture"`;
