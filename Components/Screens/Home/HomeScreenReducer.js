@@ -1,10 +1,10 @@
-import { TOGGLE_VIEW, SEARCH_PICS, UPDATE_SEARCH_QUERY, SAVE_LAST_VIEW, UPDATE_LOADING } from './HomeScreenActionTypes'
+import { TOGGLE_VIEW, SEARCH_PICS, SAVE_LAST_VIEW, UPDATE_LOADING, SAVE_LAST_LIST } from './HomeScreenActionTypes'
 
 const initialState = {
     view: 'Grid',
     lastView: '',
     picsList: [],
-    searchQuery: '',
+    lastPicsList: [],
     isLoading: true
 }
 
@@ -20,11 +20,6 @@ export default (state = initialState, action) => {
                 ...state,
                 view: action.data.view
             }
-        case UPDATE_SEARCH_QUERY:
-            return {
-                ...state,
-                searchQuery: action.data.searchQuery
-            }   
         case SAVE_LAST_VIEW:
             return {
                 ...state,
@@ -35,6 +30,11 @@ export default (state = initialState, action) => {
                 ...state,
                 isLoading: action.data.isLoading
             }   
+        case SAVE_LAST_LIST:
+            return {
+                ...state,
+                lastPicsList: action.data.picsList
+            }  
         default:
             return state
     }

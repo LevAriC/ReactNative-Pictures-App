@@ -1,4 +1,4 @@
-import { TOGGLE_VIEW, SEARCH_PICS, UPDATE_SEARCH_QUERY, SAVE_LAST_VIEW, UPDATE_LOADING } from './HomeScreenActionTypes'
+import { TOGGLE_VIEW, SEARCH_PICS, SAVE_LAST_VIEW, UPDATE_LOADING, SAVE_LAST_LIST } from './HomeScreenActionTypes'
 
 const toggleView = (view) => ({
     type: TOGGLE_VIEW,
@@ -6,6 +6,14 @@ const toggleView = (view) => ({
 })
 const handleToggleView = (view) => async dispatch => {
     dispatch(toggleView(view))
+}
+
+const saveLastPicsList = (picsList) => ({
+    type: SAVE_LAST_LIST,
+    data: { picsList }
+})
+const handleSaveLastPicsList = (picsList) => async dispatch => {
+    dispatch(saveLastPicsList(picsList))
 }
 
 const updateIsLoading = (isLoading) => ({
@@ -24,14 +32,6 @@ const handleSaveLastView = (view) => async dispatch => {
     dispatch(saveLastView(view))
 }
 
-const updateSearchQuery = (searchQuery) => ({
-    type: UPDATE_SEARCH_QUERY,
-    data: { searchQuery }
-})
-const handleUpdateSearchQuery = (searchQuery) => async dispatch => {
-    dispatch(updateSearchQuery(searchQuery))
-}
-
 const updatePicsList = (picList) => ({
     type: SEARCH_PICS,
     data: { picList }
@@ -45,7 +45,7 @@ const handlePicsSearch = (searchQuery) => async dispatch => {
     await fetch(request)
     .then(response => response.json())
     .then(async data => dispatch(updatePicsList(data.hits)))
-    .catch(err => console.log(err))
+    .catch(err => console.log('Fetch Error: ' + err))
 }
 
 export default {
@@ -53,10 +53,10 @@ export default {
     handleToggleView,
     updatePicsList,
     toggleView,
-    updateSearchQuery,
-    handleUpdateSearchQuery,
     saveLastView,
     handleSaveLastView,
     updateIsLoading,
-    handleUpdateIsLoading
+    handleUpdateIsLoading,
+    saveLastPicsList,
+    handleSaveLastPicsList
 }

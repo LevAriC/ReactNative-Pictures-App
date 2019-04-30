@@ -13,7 +13,7 @@ const mapStateToProps = ({ HomeScreen, FavoritesScreen }) => {
     return {
         view: HomeScreen.view,
         picsList: HomeScreen.picsList,
-        searchQuery: HomeScreen.searchQuery,
+        lastPicsList: HomeScreen.lastPicsList,
         lastView: HomeScreen.lastView,
         isLoading: HomeScreen.isLoading,
         favoritesList: FavoritesScreen.favoritesList
@@ -41,8 +41,7 @@ export class HomeScreen extends Component {
     }
 
     componentDidMount() {
-        const { searchQuery } = this.props
-        this.handleSearch(searchQuery)
+        this.handleSearch('')
         this.loadFavoritesFromStorage()
     }
 
@@ -85,37 +84,33 @@ export class HomeScreen extends Component {
         const { handleToggleView, handleSaveLastView } = this.props.HomeScreenActions
         handleSaveLastView(view)
 
-        if (view === 'Grid') {
-            handleToggleView('List')
-        } else {
-            handleToggleView('Grid')
-        }
+        if (view === 'Grid') handleToggleView('List')
+        else handleToggleView('Grid')
     }
 
     changeToPicView(pic) {
-        const { view } = this.props
-        const { handleSaveLastView, handleToggleView, updatePicsList } = this.props.HomeScreenActions
-        let picList = [pic]
-        updatePicsList(picList)
+        const { view, picsList } = this.props
+        const { handleSaveLastView, handleToggleView, updatePicsList, handleSaveLastPicsList } = this.props.HomeScreenActions
+        let singlePicList = [pic]
+        handleSaveLastPicsList(picsList)
+        updatePicsList(singlePicList)
         handleToggleView('Picture')
         handleSaveLastView(view)
     }
 
     changeToLastView() {
-        const { searchQuery, lastView } = this.props
-        const { handlePicsSearch, handleToggleView, handleUpdateIsLoading } = this.props.HomeScreenActions
+        const { lastView, lastPicsList } = this.props
+        const { handleToggleView, handleUpdateIsLoading, updatePicsList } = this.props.HomeScreenActions
         handleUpdateIsLoading(true)
-        console.log('string: ' + searchQuery)
-        handlePicsSearch(searchQuery)
+        updatePicsList(lastPicsList)
         handleToggleView(lastView)
         setTimeout(() => { handleUpdateIsLoading(false) }, 600)
     }
 
     handleSearch(searchQuery) {
-        const { handlePicsSearch, handleUpdateSearchQuery, handleUpdateIsLoading } = this.props.HomeScreenActions
+        const { handlePicsSearch, handleUpdateIsLoading } = this.props.HomeScreenActions
         handleUpdateIsLoading(true)
         handlePicsSearch(searchQuery)
-        handleUpdateSearchQuery(searchQuery)
         setTimeout(() => { handleUpdateIsLoading(false) }, 800)
     }
 

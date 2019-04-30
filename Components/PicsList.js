@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Dimensions, Alert  } from 'react-native'
-import { Header, Button, Icon, SearchBar, ButtonGroup  } from 'react-native-elements'
+import { Button, Icon } from 'react-native-elements'
 import ImageView from 'react-native-image-view'
 
 export default class PicsList extends Component {
@@ -47,6 +47,7 @@ export default class PicsList extends Component {
     }
 
     renderListPic({item}) {
+        let tagsArr = item.tags.split(',')
         return (
             <TouchableOpacity 
             onPress={() =>  this.props.picView(item)}
@@ -55,7 +56,7 @@ export default class PicsList extends Component {
                 <View style={styles.listContainer}>
                     <Image source={{ uri: item.previewURL }} style={styles.listPhoto} />
                     <View style={styles.listTextContainer}>
-                        <Text style={styles.listTitle}>{item.tags}</Text>
+                        <Text style={styles.listTitle}>{tagsArr[0]}</Text>
                         <Text style={styles.description}>Views: {item.views}  Likes: {item.likes}</Text>
                     </View>
                 </View>
@@ -110,7 +111,8 @@ export default class PicsList extends Component {
                     <View>
                         <Button
                         large
-                        icon={<Icon type='font-awesome' name='heart' color='white' size={'40'} />}
+                        raised
+                        icon={<Icon type='font-awesome' name='heart' color='white' size={'42'} />}
                         type="clear"
                         buttonStyle={styles.favoritesButton}
                         onPress={() => { 
@@ -157,12 +159,13 @@ const styles = StyleSheet.create({
     listTextContainer: {
         flex: 1,
         flexDirection: 'column',
-        marginLeft: 20,
+        marginLeft: 25,
         justifyContent: 'center',
     },
     listTitle: {
-        fontSize: 14,
-        marginBottom: 5,
+        fontSize: 16,
+        fontWieght: 'bold',
+        marginBottom: 6,
         color: '#000',
     },
     favoritesButton: {
@@ -171,7 +174,7 @@ const styles = StyleSheet.create({
     },
     description: {
         fontFamily: 'AppleSDGothicNeo-Light',
-        fontSize: 12,
+        fontSize: 13,
         color: '#000',
     }
 });
