@@ -1,5 +1,5 @@
 import { ADD_TO_FAVORITES, CHANGE_VIEW, SAVE_BIG_PIC } from './FavoritesScreenActionTypes'
-import { StyleSheet, Text, View, AsyncStorage } from 'react-native'
+import { AsyncStorage } from 'react-native'
 
 const addToFavorites = (pic) => ({
     type: ADD_TO_FAVORITES,

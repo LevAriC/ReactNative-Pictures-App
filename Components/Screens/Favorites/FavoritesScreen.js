@@ -31,6 +31,7 @@ export class FavoritesScreen extends Component {
         this.renderFavoritesList = this.renderFavoritesList.bind(this)
         this.renderGridPic = this.renderGridPic.bind(this)
         this.renderSinglePicView = this.renderSinglePicView.bind(this)
+        this.gridKeyExtractor = this.gridKeyExtractor.bind(this)
     }
 
     static navigationOptions = () => ({
@@ -43,6 +44,10 @@ export class FavoritesScreen extends Component {
             height: 70,
         }
     })
+
+    gridKeyExtractor(item) {
+        return item.id.toString()
+    }
 
     renderGridPic({item}) {
         const { handleChangeView, handleSaveBigPic } = this.props.FavoritesScreenActions
@@ -97,6 +102,7 @@ export class FavoritesScreen extends Component {
                         data={favoritesList}
                         renderItem={this.renderGridPic}
                         numColumns={3}
+                        keyExtractor={this.gridKeyExtractor}
                         />
                     )
                 }

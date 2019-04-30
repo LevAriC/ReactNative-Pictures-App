@@ -7,7 +7,8 @@ export default class PicsList extends Component {
 
     constructor(props) {
         super(props)
-        this._keyExtractor = this._keyExtractor.bind(this)
+        this.gridKeyExtractor = this.gridKeyExtractor.bind(this)
+        this.listKeyExtractor = this.listKeyExtractor.bind(this)
         this.renderGridPic = this.renderGridPic.bind(this)
         this.renderGridView = this.renderGridView.bind(this)
         this.renderListPic = this.renderListPic.bind(this)
@@ -15,8 +16,11 @@ export default class PicsList extends Component {
         this.renderSinglePicView = this.renderSinglePicView.bind(this)
     }
 
-    _keyExtractor(item) {
-        return item.id
+    gridKeyExtractor(item) {
+        return item.id.toString()
+    }
+    listKeyExtractor(item) {
+        return (item.id + 1).toString()
     }
     
     renderGridPic({item}) {
@@ -36,6 +40,8 @@ export default class PicsList extends Component {
             data={this.props.picsList}
             renderItem={this.renderGridPic}
             numColumns={3}
+            key={this.gridKeyExtractor}
+            keyExtractor={this.gridKeyExtractor}
             />
         )
     }
@@ -62,7 +68,7 @@ export default class PicsList extends Component {
             <FlatList
             data={this.props.picsList}
             renderItem={this.renderListPic}
-            key={this._keyExtractor}
+            keyExtractor={this.listKeyExtractor}
             />
         )
     }

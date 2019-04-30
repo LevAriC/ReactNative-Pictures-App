@@ -16,15 +16,32 @@ export default class IBButtonGroup extends Component {
     }
 
     render() {
-        const buttons = ['Grid View', 'List View']
+        const grid = () => <Icon type='font-awesome' name='th' color='grey' size={'20'} />
+        const gridSelected = () => <Icon type='font-awesome' name='th' color='white' size={'20'} />
+        const list = () => <Icon type='font-awesome' name='list' color='grey' size={'20'} />
+        const listSelected = () => <Icon type='font-awesome' name='list' color='white' size={'20'} />
+        let buttons = []
+
+        if (this.props.view === 'Grid') buttons = [{element: gridSelected}, {element: list}]
+        else buttons = [{element: grid}, {element: listSelected}]
+
         const { selectedIndex } = this.state
         return (
             <ButtonGroup
                 onPress={this.updateIndex}
                 selectedIndex={selectedIndex}
                 buttons={buttons}
-                containerStyle={{ height: 28, marginTop: 5, marginBottom: 5 }}
+                containerStyle={styles.container}
             />
         )
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        height: 30, 
+        marginTop: 5, 
+        marginBottom: 5,
+        borderWidth: 0.5
+    }
+})

@@ -96,15 +96,16 @@ export class HomeScreen extends Component {
         const { view } = this.props
         const { handleSaveLastView, handleToggleView, updatePicsList } = this.props.HomeScreenActions
         let picList = [pic]
-        handleSaveLastView(view)
-        handleToggleView('Picture')
         updatePicsList(picList)
+        handleToggleView('Picture')
+        handleSaveLastView(view)
     }
 
     changeToLastView() {
         const { searchQuery, lastView } = this.props
         const { handlePicsSearch, handleToggleView, handleUpdateIsLoading } = this.props.HomeScreenActions
         handleUpdateIsLoading(true)
+        console.log('string: ' + searchQuery)
         handlePicsSearch(searchQuery)
         handleToggleView(lastView)
         setTimeout(() => { handleUpdateIsLoading(false) }, 600)
@@ -124,7 +125,7 @@ export class HomeScreen extends Component {
         return(
             <View style={styles.container}>
                 <IBSearchBar handleSearch={this.handleSearch} />
-                <IBButtonGroup handlePress={this.toggleView} />
+                <IBButtonGroup handlePress={this.toggleView} view={view} />
                 {
                     picsList.length == 0 ? (
                         <Text style={styles.noResultsText}>No Results Were Found...</Text>
@@ -146,10 +147,11 @@ export class HomeScreen extends Component {
     }
 
     renderLoadingScreen() {
+        const { view } = this.props
         return(
             <View>
                 <IBSearchBar handleSearch={this.handleSearch} />
-                <IBButtonGroup handlePress={this.toggleView} />
+                <IBButtonGroup handlePress={this.toggleView} view={view} />
                 <View style={styles.horizontal}>
                     <ActivityIndicator size="large" color="#0000ff" />
                 </View>
@@ -176,6 +178,8 @@ const styles = StyleSheet.create({
       padding: 200
     },
     noResultsText: {
+        flex: 1,
+        justifyContent: 'center',
         fontSize: 16,
         textAlign: 'center',
         marginTop: 200

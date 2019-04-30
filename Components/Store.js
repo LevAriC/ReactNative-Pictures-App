@@ -7,4 +7,4 @@ const composedEnhancers = compose(middleware)
 const initialState = {}
 const store = createStore(RootReducer, initialState, composedEnhancers)
 
-export default store;
+export default store

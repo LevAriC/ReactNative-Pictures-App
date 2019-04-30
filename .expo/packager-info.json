@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 14300,
+  "expoServerNgrokUrl": "https://v5-igt.anonymous.reactnative-pictures-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.v5-igt.anonymous.reactnative-pictures-app.exp.direct",
+  "ngrokPid": 2904
 }
