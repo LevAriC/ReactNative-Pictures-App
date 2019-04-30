@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, FlatList, Image, ActivityIndicator, TouchableOpacity, ScrollView, Dimensions  } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Dimensions  } from 'react-native'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import FavoritesScreenActions from './FavoritesScreenActions'
-import HomeScreenActions from '../Home/HomeScreenActions'
-import { Header, Button, Icon, SearchBar, ButtonGroup  } from 'react-native-elements'
-import PicsList from '../../PicsList'
 import ImageView from 'react-native-image-view'
 
 

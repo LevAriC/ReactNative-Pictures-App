@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Header, Button, Icon, SearchBar, ButtonGroup  } from 'react-native-elements'
+import { StyleSheet } from 'react-native'
+import { Icon, ButtonGroup  } from 'react-native-elements'
 
 export default class IBButtonGroup extends Component {
 

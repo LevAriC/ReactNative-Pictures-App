@@ -76,18 +76,20 @@ export default class PicsList extends Component {
 
     renderSinglePicView() {
         let pic = this.props.picsList[0]
-        const { width, height } = Dimensions.get('window');
+        const { width, height } = Dimensions.get('window')
 
         const images = [
             {
                 source: { uri: pic.largeImageURL},
                 width: width,
-                height: height -200,
-            },
+                height: height-200,
+            }
         ]
 
         let isInFavorites = false
-        this.props.favoritesList.map((item) => { if (item.id === pic.id) isInFavorites = true })
+        this.props.favoritesList.map((item) => { 
+            if (item.id === pic.id) isInFavorites = true 
+        })
 
         if (isInFavorites) {
             return(

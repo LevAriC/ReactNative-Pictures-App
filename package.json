@@ -5,7 +5,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint --cache --format codeframe --ext .js ."
   },
   "jest": {
     "preset": "jest-react-native"
@@ -22,13 +23,42 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^24.7.1",
     "babel-preset-expo": "^5.0.0",
     "babel-preset-react-native": "^4.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-config-react-native": "^4.0.0",
+    "eslint-plugin-jest": "^22.5.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react-native": "^3.7.0",
     "jest": "^24.7.1",
     "jest-react-native": "^18.0.0",
+    "prettier": "^1.17.0",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6"
   },
-  "private": true
+  "private": true,
+  "checkSubmission": {
+    "ex": 2,
+    "students": [
+      {
+        "id": "203447834",
+        "fullName": "Michael Makmel",
+        "email": "makmel.miki@gmail.com"
+      },
+      {
+        "id": "304829807",
+        "fullName": "Lev Ari Cohen",
+        "email": "Levaricohen@gmail.com"
+      }
+    ],
+    "os": "Windows",
+    "device": "iOS",
+    "deliveryDate": "04/30/2019",
+    "delay": false
+  }
 }
